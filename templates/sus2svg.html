@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 追加 -->
+  <title>sus2svg</title>
+  <style>
+    /* 全体の背景色を設定 */
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    /* ヘッダー部分のスタイル */
+    header {
+      background-color: #ab7ed3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    /* メインコンテンツ部分のスタイル */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+    }
+    /* フォーム部分のスタイル */
+    form {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+      padding: 20px;
+      max-width: 1000px;
+      margin-left: 0px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    /* ボタンのスタイル */
+    input[type="button"] {
+      background-color: #ab7ed3;
+      border: none;
+      color: white;
+      padding: 100px 200px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      margin: 20px auto 0;
+      font-size: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* ボタンのスタイル（ホバー時） */
+    input[type="button"]:hover {
+      opacity: 0.6; /* ホバー時の透明度を下げる */
+    };
+    /* パラグラフのスタイル */
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>sus2svg</header> <!-- ヘッダー追加 -->
+  <main>
+    <form id="my-form" method="post" enctype="multipart/form-data">
+      <input type="file" id="fileInput" name="fileInput" accept=".sus">
+      <p></p>
+      <div class="button-container">
+        <input type="button" value="横に譜面を生成" onclick="submitForm('/generate?type=x')">
+        <input type="button" value="縦に譜面を生成" onclick="submitForm('/generate?type=y')">
+      </div>
+    </form>
+  </main>
+<script>
+  function submitForm(action) {
+    var form = document.getElementById("my-form");
+    // ファイルが選択されているかチェックする
+    var fileInput = document.querySelector('input[type=file]');
+    if (fileInput.files.length === 0) {
+      alert('ファイルを選択してから生成ボタンを押してください！');
+      return;
+    }
+    form.action = action;
+    form.submit();
+  }
+</script>
