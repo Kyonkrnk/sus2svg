@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>sus2svg</title>
   <style>
 
@@ -68,15 +70,21 @@
   <header>sus2svg</header>
   <main>
     <form id="my-form" method="post" enctype="multipart/form-data">
-      <input type="file" id="fileInput" name="fileInput" accept=".sus">
-      <p></p>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="fileInput" name="fileInput" accept=".sus">
+        <label class="custom-file-label" for="inputFile" data-browse="選択">ファイルが選択されていません</label>
+      </div>
       <div class="button-container">
         <input type="button" value="横に譜面を生成" onclick="submitForm('/generate?type=x')">
         <input type="button" value="縦に譜面を生成" onclick="submitForm('/generate?type=y')">
       </div>
     </form>
   </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 <script>
+  bsCustomFileInput.init();
+
   function submitForm(action) {
     var form = document.getElementById("my-form");
     // ファイルが選択されているかチェックする
