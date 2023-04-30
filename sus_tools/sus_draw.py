@@ -153,7 +153,10 @@ class SUS:
             )]
 
             class_name = 'slide-critical' if note.head.tap and note.head.tap.type != 1 else 'slide'
-            color = '#fcf1c3' if note.head.tap and note.head.tap.type != 1 else '#c9fce2'
+            if note.head.tap and note.head.tap.type != 1:
+                color = svgwrite.utils.rgb(r=252, g=241, b=195, mode='RGB') 
+            else:
+                color = svgwrite.utils.rgb(r=201, g=252, b=226, mode='RGB')
 
 
             slide_paths.append(svgwrite.path.Path(
